@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:fitnessapp/View/Auth/GoalScreens.dart';
 import 'package:fitnessapp/View/Auth/SetGoalsScreen.dart';
 import 'package:flutter/material.dart';
@@ -17,97 +19,104 @@ class _NameScreenState extends State<NameScreen> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.black.withOpacity(0.5),
-      body: Container(
-        width: width,
-        height: height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              child: Text(
-                "Good to here",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 30),
-              child: Container(
+      body: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.grey.shade200.withOpacity(0.1),
+            // borderRadius: BorderRadius.circular(10),
+          ),
+          width: width,
+          height: height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
                 child: Text(
-                  "What's your name?",
+                  "Good to here",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 28,
+                      fontSize: 36,
                       fontWeight: FontWeight.bold),
                 ),
               ),
-            ),
-
-            Padding(
-              padding: EdgeInsets.only(top: 70,left: 50,right: 50),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+              Padding(
+                padding: EdgeInsets.only(top: 30),
+                child: Container(
+                  child: Text(
+                    "What's your name?",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
-                child: TextField(
-                  controller: name,
-                  cursorColor: Colors.black12,
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white),
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(22),
-                      borderSide: BorderSide(
-                        width: 0,
-                        style: BorderStyle.none,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(22),
-                      borderSide: BorderSide(
-                        width: 0,
-                        style: BorderStyle.none,
-                      ),
-                    ),
-                    hintText: "Enter Name",
-                    hintStyle: TextStyle(
+              ),
+
+              Padding(
+                padding: EdgeInsets.only(top: 70,left: 50,right: 50),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: TextField(
+                    controller: name,
+                    cursorColor: Colors.black12,
+                    style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
                         color: Colors.white),
-                    fillColor: Colors.grey.shade500,
-                    filled: true,
-                    errorBorder: InputBorder.none,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(22),
+                        borderSide: BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(22),
+                        borderSide: BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
+                        ),
+                      ),
+                      hintText: "Enter Name",
+                      hintStyle: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white),
+                      fillColor: Colors.grey.shade500,
+                      filled: true,
+                      errorBorder: InputBorder.none,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 50),
-              child: GestureDetector(
-                onTap: (){
-                  if(name.text.length!=0){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ShowName(name: name.text,)));
-                  }
+              Padding(
+                padding: EdgeInsets.only(top: 50),
+                child: GestureDetector(
+                  onTap: (){
+                    if(name.text.length!=0){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ShowName(name: name.text,)));
+                    }
 
-                },
-                child: Container(
-                  child: Text(
-                    "Next ->",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white,fontSize: 28,fontWeight: FontWeight.bold),
+                  },
+                  child: Container(
+                    child: Text(
+                      "Next ->",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white,fontSize: 28,fontWeight: FontWeight.bold),
+                    ),
+
                   ),
-
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

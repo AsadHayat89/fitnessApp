@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:fitnessapp/View/Auth/PersonalInfoScreen.dart';
 import 'package:flutter/material.dart';
 class SetGoalScreen extends StatefulWidget {
@@ -17,71 +19,100 @@ class _SetGoalScreenState extends State<SetGoalScreen> {
     return Scaffold(
       backgroundColor: Colors.black.withOpacity(0.5),
       body: SingleChildScrollView(
-        child: Container(
-          width: width,
-          height: height,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                child: Text(
-                  "Set Your First Goal",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-
-              Padding(
-                padding: EdgeInsets.only(top: 70,left: 50,right: 50),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: TextField(
-                    controller: name,
-                    cursorColor: Colors.black12,
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.grey.shade200.withOpacity(0.1),
+              // borderRadius: BorderRadius.circular(10),
+            ),
+            width: width,
+            height: height,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  child: Text(
+                    "Set Your First Goal",
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white),
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(22),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(22),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        ),
-                      ),
-                      hintText: "Enter Your Goal",
-                      hintStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.only(top: 70,left: 50,right: 50),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: TextField(
+                      controller: name,
+                      cursorColor: Colors.black12,
+                      style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                           color: Colors.white),
-                      fillColor: Colors.grey.shade500,
-                      filled: true,
-                      errorBorder: InputBorder.none,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(22),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(22),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                        hintText: "Enter Your Goal",
+                        hintStyle: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white),
+                        fillColor: Colors.grey.shade500,
+                        filled: true,
+                        errorBorder: InputBorder.none,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 60),
-                child: GestureDetector(
-                  onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => GoalText(decreas: "asdf",)));
+                Padding(
+                  padding: EdgeInsets.only(top: 60),
+                  child: GestureDetector(
+                    onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => GoalText(decreas: "asdf",)));
 
-                  },
+                    },
+                    child: Container(
+                      width: width/1.4,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30.0), // Set rounded corner radius
+                        border: Border.all(
+                          color: Colors.grey, // Set border color
+                          width: 2.0, // Set border width
+                        ),
+                      ),
+                      child:Center(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: Text(
+                            "Loss 50lbs",
+                            style: TextStyle(color: Colors.grey,fontSize: 20,fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                      ), // Your child widget goes here
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 20),
                   child: Container(
                     width: width/1.4,
                     decoration: BoxDecoration(
@@ -95,59 +126,37 @@ class _SetGoalScreenState extends State<SetGoalScreen> {
                       child: Padding(
                         padding: EdgeInsets.symmetric(vertical: 10),
                         child: Text(
-                          "Loss 50lbs",
+                          "Run 2 miles each day",
                           style: TextStyle(color: Colors.grey,fontSize: 20,fontWeight: FontWeight.w500),
                         ),
                       ),
                     ), // Your child widget goes here
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: Container(
-                  width: width/1.4,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30.0), // Set rounded corner radius
-                    border: Border.all(
-                      color: Colors.grey, // Set border color
-                      width: 2.0, // Set border width
-                    ),
-                  ),
-                  child:Center(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10),
-                      child: Text(
-                        "Run 2 miles each day",
-                        style: TextStyle(color: Colors.grey,fontSize: 20,fontWeight: FontWeight.w500),
+                Padding(
+                  padding: EdgeInsets.only(top: 20),
+                  child: Container(
+                    width: width/1.4,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30.0), // Set rounded corner radius
+                      border: Border.all(
+                        color: Colors.grey, // Set border color
+                        width: 2.0, // Set border width
                       ),
                     ),
-                  ), // Your child widget goes here
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: Container(
-                  width: width/1.4,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30.0), // Set rounded corner radius
-                    border: Border.all(
-                      color: Colors.grey, // Set border color
-                      width: 2.0, // Set border width
-                    ),
-                  ),
-                  child:Center(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10),
-                      child: Text(
-                        "Eat Healthy",
-                        style: TextStyle(color: Colors.grey,fontSize: 20,fontWeight: FontWeight.w500),
+                    child:Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Text(
+                          "Eat Healthy",
+                          style: TextStyle(color: Colors.grey,fontSize: 20,fontWeight: FontWeight.w500),
+                        ),
                       ),
-                    ),
-                  ), // Your child widget goes here
+                    ), // Your child widget goes here
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

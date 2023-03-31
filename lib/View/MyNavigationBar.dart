@@ -3,6 +3,7 @@ import 'package:fitnessapp/View/Home/Action.dart';
 import 'package:fitnessapp/View/Home/Home.dart';
 import 'package:fitnessapp/View/Home/Progress.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 class MyNavigationBar extends StatelessWidget {
   var bottomNavBar=Get.put(BottomNavController());
@@ -38,9 +39,10 @@ class MyNavigationBar extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.only(left: 20,right: 20),
                 child: BottomNavigationBar(
-
+                  elevation: 0,
                 showUnselectedLabels: true,
-                    items: <BottomNavigationBarItem>[
+
+                  items: <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
                       label: "Home",
                       icon: Icon(Icons.home),
@@ -56,7 +58,7 @@ class MyNavigationBar extends StatelessWidget {
                     backgroundColor:Colors.black87,
                   ),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.self_improvement),
+                      icon: Icon(FontAwesomeIcons.arrowTrendUp),
                       label: "Progress",
                       // title: Text('Search'),
                       backgroundColor: Colors.black87),
